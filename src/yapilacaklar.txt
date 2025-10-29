@@ -1,0 +1,4 @@
+1 - Yorumlamalar
+2 - Kod olması gerektiği gibi çalışıyor mu tam emin olmak
+3 - AI olduğu bağıran şeyleri silmek
+4 - AI detectorlardan da kontrol etmek

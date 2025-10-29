@@ -1,0 +1,110 @@
+hash fonksiyonunu gptden buldum da değiştirebiliriz orayı
+
+## 🔹 1️⃣ `loadFactor`
+
+private final double loadFactor;
+
+bu, hash table ne kadar dolunca genişletilecek (resize edilecek) belirler.
+
+örnek:
+loadFactor = 0.75;
+
+demek ki tablodaki ortalama doluluk %75’i geçerse kapasiteyi (bucket sayısını) **iki katına çıkaracağız**.
+
+hesap:
+
+loadFactor = 0.75
+capacity = 16
+threshold = 16 * 0.75 = 12
+
+
+yani 12. elemandan sonra rehash başlar.
+
+
+
+## 🔹 2️⃣ `threshold`
+
+
+private int threshold;  // resize eşiği = (int)(capacity * loadFactor)
+
+
+bu,kaç elemana kadar büyümeden dayanabiliriz** sayısıdır.
+
+örnek:
+
+capacity = 16
+loadFactor = 0.75
+threshold = 12
+
+tabloya 13. eleman eklenince `resize()` çağrılır:
+
+if (size > threshold) resize();
+
+
+rehash sonrası kapasite 32 olur, yeni threshold = 32 * 0.75 = 24 olur.
+
+
+## 🔹 3️⃣ `capacityMask`
+
+private int capacityMask; // capacity-1, power-of-two ise hızlı mod için
+
+
+burası biraz “performans sihri” kısmı.
+normalde bir değeri bucket sayısına göre mod almak için şöyle yaparsın:
+
+
+int index = (int)(hash % capacity);
+
+
+ama `%` (mod) işlemi **yavaştır**.
+eğer `capacity` **power-of-two** (örnek: 8, 16, 32, …) ise
+`hash % capacity` ile `hash & (capacity - 1)` **tamamen aynı sonucu** verir — ama **çok daha hızlıdır** çünkü bitwise `AND` işlemi kullanılır.
+
+
+capacity = 16 → binary = 10000
+capacity - 1 = 15 → binary = 01111
+hash & 15  → hash’in sadece son 4 bitini alır (mod 16 gibi)
+
+
+bu yüzden:
+
+capacityMask = capacity - 1;
+
+ve sonra index hesaplanırken:
+
+int index = (int)(mixed & capacityMask);
+
+diyoruz.
+bu işlem %100 doğru ve çok hızlı.
+
+
+## 🔹 4️⃣ Üçü birlikte nasıl çalışıyor
+
+diyelim tabloyu şöyle oluşturduk:
+
+DoubleIntHashTable ht = new DoubleIntHashTable(16, 0.75);
+
+
+| Değişken     | Anlamı         | Değer |
+| ------------ | -------------- | ----- |
+| capacity     | bucket sayısı  | 16    |
+| capacityMask | hızlı mod için | 15    |
+| loadFactor   | doluluk oranı  | 0.75  |
+| threshold    | büyüme eşiği   | 12    |
+
+* 12 elemana kadar ekleme yapabilirsin
+* 13. eleman eklenince rehash olur (tablo 32 olur)
+* bucket index hesabı `(hash & 15)` ile yapılır (çok hızlı mod)
+
+---
+
+## 🔹 5️⃣ Özet
+
+| Alan           | Görevi                        | Açıklama                                  |
+| -------------- | ----------------------------- | ----------------------------------------- |
+| `loadFactor`   | tablo doluluk oranı limiti    | %75 dolunca büyüt                         |
+| `threshold`    | büyütme eşiği (eleman sayısı) | = capacity × loadFactor                   |
+| `capacityMask` | hızlı mod hesaplama           | sadece power-of-two capacity’de işe yarar |
+
+
+

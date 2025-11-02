@@ -1,14 +1,12 @@
-// ===============================
-// HashTableBenchmark.java
-// ===============================
 
-import java.util.SplittableRandom;
+
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.SplittableRandom;
 
 public class HashTableBenchmark {
 
-    // ===== Distributions (SplittableRandom tabanlı) =====
+   
     public interface Dist { double next(); void reseed(long seed); }
 
     public static class UniformDistribution implements Dist {
@@ -29,7 +27,7 @@ public class HashTableBenchmark {
         @Override public String toString(){ return String.format("Exponential(λ=%.4f; mean=%.1f)", lambda, 1.0/lambda); }
     }
 
-    /** Gaussian via Box–Muller (spare cache’li). */
+    
     public static class GaussianDistribution implements Dist {
         private final double mean, std; private SplittableRandom rng;
         private boolean hasSpare=false; private double spare=0.0;

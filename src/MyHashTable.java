@@ -1,7 +1,3 @@
-// ===============================
-// MyHashTable.java
-// ===============================
-
 public class MyHashTable {
     private static final double DEFAULT_LOAD_FACTOR = 0.75;
     private static final int DEFAULT_INITIAL_CAPACITY = 16; // power of two

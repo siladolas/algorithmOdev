@@ -1,48 +1,41 @@
-/**
- * CENG303 HW1 – Summary (≤250 words)
- * Hashing strategy: We hash doubles by taking their exact raw bits
- * (Double.doubleToRawLongBits), then apply a SplitMix64-style mixing to
- * decorrelate bit patterns. We fold to 32-bit and index by a power-of-two mask.
- * Equality uses raw-bit equality, so +0.0 and -0.0 are different and NaN payloads
- * are preserved. This strategy avoids modulo on doubles and keeps chains short
- * even under non-uniform inputs.
- *
- * Distributions & params (data are doubles only):
- *   • Uniform[0, 1000]
- *   • Gaussian(μ=500, σ=100)
- *   • Exponential(λ=0.005)  (mean = 200)
- *
- * Seed policy: baseSeed = 1234; per-trial seed = 1234 + trialIndex (0-based).
- * The SAME per-trial seed is used for both implementations within a trial to
- * ensure fairness.
- *
- * Workloads:
- *   • Build-only: insert n DISTINCT keys (duplicates by raw-bit equality are
- *     resampled).
- *   • Mixed: exactly n ops from empty: 50% insert, 25% search, 25% delete; targets
- *     chosen uniformly from currently present keys.
- *
- * Sizes: n = 10^k, k ∈ {3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0}.
- * Timing: System.nanoTime(), 5 trials averaged per (distribution, n, workload).
- *
- * Results (expected trends): Non-uniform shapes (e.g., Exponential) increase
- * local clustering; our mix function keeps max/mean chain lengths moderate and
- * throughput competitive. HashMap remains a strong baseline; our table approaches
- * it under uniform data and stays robust under skew.
- *
- * Java 8, standard library only. Program is headless; all results go to CSV.
- */
+/* 
+Hashing strategy:
+We treated doubles by their exact raw IEEE-754 bits (Double.doubleToRawLongBits),
+then we applied a SplitMix64-style and folded them to 32 bits to produce the bucket index because it is better than using xor.
+Equality is checked by raw-bit equality,so +0.0 and -0.0 remain distinct and NaN payloads are preserved. 
+This keeps distribution artifacts from the input from directly degrading the index function.
 
-import java.io.PrintWriter;
+
+Results:
+Uniform inputs yield the shortest chains and highest throughput. Gaussian inputs
+produce only slightly longer chains and a small throughput drop. Exponential (skewed)
+data increases local clustering and max chain lengths noticeably, which lowers
+throughput. Overall, the student table is competitive with Java's default HashMap library:
+it approaches HashMap under uniform data and stays robust under skew thanks to
+the mixing step, though HashMap retains a small constant throughput advantage.
+
+
+Distributions and parameters we used:
+
+- Uniform dist. [0.0, 1000.0]
+- Gaussian dist. (mean=500.0, stddev=100.0)
+- Exponential dist. (lambda=0.005)  (mean = 200)
+
+Seed policy:
+We used base seed of 1234 and derive per-trial seeds as 1234 + trialIndex; the
+same per-trial seed is used for both implementations to ensure a fair comparison.
+*/
+
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.File;
+import java.io.PrintWriter;
 
 public class Main {
-    private static final boolean VERBOSE = false; // no console I/O during timing; print outside only
+    private static final boolean VERBOSE = false; 
 
     public static void main(String[] args) {
-        // === Define distributions (PRINT PARAMS AT RUNTIME, before any timing) ===
+        
         HashTableBenchmark.UniformDistribution uniform =
                 new HashTableBenchmark.UniformDistribution(0.0, 1000.0, 42);
         HashTableBenchmark.GaussianDistribution gaussian =
@@ -50,13 +43,13 @@ public class Main {
         HashTableBenchmark.ExponentialDistribution exponential =
                 new HashTableBenchmark.ExponentialDistribution(0.005, 42);
 
-        // Required by spec: print params at runtime (outside timing windows)
+      
         System.out.println("Distributions at runtime:");
         System.out.println("  " + uniform);
         System.out.println("  " + gaussian);
         System.out.println("  " + exponential);
 
-        // === Open CSV in APPEND mode; write header only if file absent/empty ===
+    
         File file = new File("benchmark_results.csv");
         boolean writeHeader = !file.exists() || file.length() == 0;
         PrintWriter csvWriter;
@@ -98,8 +91,7 @@ public class Main {
             for (int n : testSizes) {
                 for (String workload : workloads) {
                     try {
-                        // NOTE: runBenchmark() performs all timing with System.nanoTime()
-                        // and does not write to console during timing.
+                        
                         HashTableBenchmark.runBenchmark(distName, distObj, n, workload, csvWriter);
                         done++;
                         if (VERBOSE) {

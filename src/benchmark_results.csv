@@ -1,0 +1,85 @@
+distribution,params,n,workload,impl,avg_time_ns,ops,throughput_ops_per_s,max_chain,mean_chain,load_factor
+"Uniform","min=0.0 max=1000.0",1000,build-only,student,130637,1000,7654799.18,3,1.244,0.488
+"Uniform","min=0.0 max=1000.0",1000,build-only,hashmap,181132,1000,5520835.63,-1,-1,-1
+"Uniform","min=0.0 max=1000.0",1000,mixed,student,141952,1000,7044634.81,4,1.269,0.479
+"Uniform","min=0.0 max=1000.0",1000,mixed,hashmap,179663,1000,5565976.30,-1,-1,-1
+"Uniform","min=0.0 max=1000.0",3162,build-only,student,376104,3162,8407249.06,5,1.204,0.386
+"Uniform","min=0.0 max=1000.0",3162,build-only,hashmap,345809,3162,9143775.90,-1,-1,-1
+"Uniform","min=0.0 max=1000.0",3162,mixed,student,279563,3162,11310509.62,3,1.204,0.377
+"Uniform","min=0.0 max=1000.0",3162,mixed,hashmap,317926,3162,9945710.64,-1,-1,-1
+"Uniform","min=0.0 max=1000.0",10000,build-only,student,701919,10000,14246658.09,5,1.322,0.610
+"Uniform","min=0.0 max=1000.0",10000,build-only,hashmap,752735,10000,13284887.78,-1,-1,-1
+"Uniform","min=0.0 max=1000.0",10000,mixed,student,843300,10000,11858176.21,5,1.346,0.624
+"Uniform","min=0.0 max=1000.0",10000,mixed,hashmap,797509,10000,12539043.45,-1,-1,-1
+"Uniform","min=0.0 max=1000.0",31623,build-only,student,1130338,31623,27976587.53,6,1.261,0.483
+"Uniform","min=0.0 max=1000.0",31623,build-only,hashmap,1504800,31623,21014752.79,-1,-1,-1
+"Uniform","min=0.0 max=1000.0",31623,mixed,student,1207925,31623,26179605.52,5,1.270,0.493
+"Uniform","min=0.0 max=1000.0",31623,mixed,hashmap,1565984,31623,20193692.91,-1,-1,-1
+"Uniform","min=0.0 max=1000.0",100000,build-only,student,4686364,100000,21338504.65,5,1.204,0.381
+"Uniform","min=0.0 max=1000.0",100000,build-only,hashmap,12122863,100000,8248876.52,-1,-1,-1
+"Uniform","min=0.0 max=1000.0",100000,mixed,student,2996525,100000,33371989.22,6,1.208,0.391
+"Uniform","min=0.0 max=1000.0",100000,mixed,hashmap,4575187,100000,21857030.11,-1,-1,-1
+"Uniform","min=0.0 max=1000.0",316228,build-only,student,14509365,316228,21794751.18,8,1.334,0.603
+"Uniform","min=0.0 max=1000.0",316228,build-only,hashmap,19893972,316228,15895669.30,-1,-1,-1
+"Uniform","min=0.0 max=1000.0",316228,mixed,student,12694198,316228,24911223.22,7,1.339,0.609
+"Uniform","min=0.0 max=1000.0",316228,mixed,hashmap,11548645,316228,27382260.00,-1,-1,-1
+"Uniform","min=0.0 max=1000.0",1000000,build-only,student,90024828,1000000,11108046.77,7,1.257,0.477
+"Uniform","min=0.0 max=1000.0",1000000,build-only,hashmap,105371771,1000000,9490207.77,-1,-1,-1
+"Uniform","min=0.0 max=1000.0",1000000,mixed,student,44557079,1000000,22443122.90,6,1.258,0.479
+"Uniform","min=0.0 max=1000.0",1000000,mixed,hashmap,70944347,1000000,14095555.77,-1,-1,-1
+"Gaussian","mean=500.0 stddev=100.0",1000,build-only,student,40317,1000,24803432.80,4,1.271,0.488
+"Gaussian","mean=500.0 stddev=100.0",1000,build-only,hashmap,46983,1000,21284294.32,-1,-1,-1
+"Gaussian","mean=500.0 stddev=100.0",1000,mixed,student,29936,1000,33404596.47,3,1.256,0.479
+"Gaussian","mean=500.0 stddev=100.0",1000,mixed,hashmap,52265,1000,19133263.18,-1,-1,-1
+"Gaussian","mean=500.0 stddev=100.0",3162,build-only,student,142275,3162,22224565.10,5,1.207,0.386
+"Gaussian","mean=500.0 stddev=100.0",3162,build-only,hashmap,179117,3162,17653265.74,-1,-1,-1
+"Gaussian","mean=500.0 stddev=100.0",3162,mixed,student,101802,3162,31060293.51,3,1.206,0.377
+"Gaussian","mean=500.0 stddev=100.0",3162,mixed,hashmap,179394,3162,17626007.56,-1,-1,-1
+"Gaussian","mean=500.0 stddev=100.0",10000,build-only,student,381032,10000,26244514.90,5,1.342,0.610
+"Gaussian","mean=500.0 stddev=100.0",10000,build-only,hashmap,468518,10000,21343897.14,-1,-1,-1
+"Gaussian","mean=500.0 stddev=100.0",10000,mixed,student,319607,10000,31288426.10,5,1.335,0.624
+"Gaussian","mean=500.0 stddev=100.0",10000,mixed,hashmap,572669,10000,17462094.16,-1,-1,-1
+"Gaussian","mean=500.0 stddev=100.0",31623,build-only,student,1428137,31623,22142833.64,5,1.262,0.483
+"Gaussian","mean=500.0 stddev=100.0",31623,build-only,hashmap,1932436,31623,16364319.44,-1,-1,-1
+"Gaussian","mean=500.0 stddev=100.0",31623,mixed,student,1111023,31623,28462957.11,5,1.266,0.493
+"Gaussian","mean=500.0 stddev=100.0",31623,mixed,hashmap,1388617,31623,22773018.05,-1,-1,-1
+"Gaussian","mean=500.0 stddev=100.0",100000,build-only,student,5761354,100000,17357031.00,6,1.203,0.381
+"Gaussian","mean=500.0 stddev=100.0",100000,build-only,hashmap,6871157,100000,14553589.74,-1,-1,-1
+"Gaussian","mean=500.0 stddev=100.0",100000,mixed,student,3616280,100000,27652726.01,6,1.202,0.391
+"Gaussian","mean=500.0 stddev=100.0",100000,mixed,hashmap,4806973,100000,20803112.48,-1,-1,-1
+"Gaussian","mean=500.0 stddev=100.0",316228,build-only,student,12543390,316228,25210728.52,6,1.331,0.603
+"Gaussian","mean=500.0 stddev=100.0",316228,build-only,hashmap,20492989,316228,15431033.51,-1,-1,-1
+"Gaussian","mean=500.0 stddev=100.0",316228,mixed,student,12528610,316228,25240469.61,7,1.334,0.609
+"Gaussian","mean=500.0 stddev=100.0",316228,mixed,hashmap,24380483,316228,12970538.77,-1,-1,-1
+"Gaussian","mean=500.0 stddev=100.0",1000000,build-only,student,90586647,1000000,11039154.59,7,1.257,0.477
+"Gaussian","mean=500.0 stddev=100.0",1000000,build-only,hashmap,125572520,1000000,7963525.78,-1,-1,-1
+"Gaussian","mean=500.0 stddev=100.0",1000000,mixed,student,84079665,1000000,11893482.21,6,1.257,0.479
+"Gaussian","mean=500.0 stddev=100.0",1000000,mixed,hashmap,88717802,1000000,11271694.94,-1,-1,-1
+"Exponential","lambda=0.0050",1000,build-only,student,25133,1000,39788326.11,5,1.272,0.488
+"Exponential","lambda=0.0050",1000,build-only,hashmap,27221,1000,36736343.26,-1,-1,-1
+"Exponential","lambda=0.0050",1000,mixed,student,24449,1000,40901468.36,4,1.263,0.479
+"Exponential","lambda=0.0050",1000,mixed,hashmap,26421,1000,37848680.97,-1,-1,-1
+"Exponential","lambda=0.0050",3162,build-only,student,102424,3162,30871670.70,4,1.225,0.386
+"Exponential","lambda=0.0050",3162,build-only,hashmap,108146,3162,29238251.99,-1,-1,-1
+"Exponential","lambda=0.0050",3162,mixed,student,77330,3162,40889693.52,4,1.191,0.377
+"Exponential","lambda=0.0050",3162,mixed,hashmap,82319,3162,38411545.33,-1,-1,-1
+"Exponential","lambda=0.0050",10000,build-only,student,233353,10000,42853530.92,6,1.350,0.610
+"Exponential","lambda=0.0050",10000,build-only,hashmap,238916,10000,41855714.98,-1,-1,-1
+"Exponential","lambda=0.0050",10000,mixed,student,231651,10000,43168386.93,5,1.339,0.624
+"Exponential","lambda=0.0050",10000,mixed,hashmap,251609,10000,39744206.29,-1,-1,-1
+"Exponential","lambda=0.0050",31623,build-only,student,1152355,31623,27442064.29,6,1.254,0.483
+"Exponential","lambda=0.0050",31623,build-only,hashmap,1277132,31623,24760948.75,-1,-1,-1
+"Exponential","lambda=0.0050",31623,mixed,student,801572,31623,39451228.34,5,1.263,0.493
+"Exponential","lambda=0.0050",31623,mixed,hashmap,926728,31623,34123281.05,-1,-1,-1
+"Exponential","lambda=0.0050",100000,build-only,student,4286108,100000,23331189.97,6,1.201,0.381
+"Exponential","lambda=0.0050",100000,build-only,hashmap,4530777,100000,22071269.45,-1,-1,-1
+"Exponential","lambda=0.0050",100000,mixed,student,2846820,100000,35126913.54,6,1.207,0.391
+"Exponential","lambda=0.0050",100000,mixed,hashmap,3474080,100000,28784599.09,-1,-1,-1
+"Exponential","lambda=0.0050",316228,build-only,student,17880784,316228,17685354.29,7,1.331,0.603
+"Exponential","lambda=0.0050",316228,build-only,hashmap,23196016,316228,13632858.33,-1,-1,-1
+"Exponential","lambda=0.0050",316228,mixed,student,13252876,316228,23861084.94,6,1.337,0.609
+"Exponential","lambda=0.0050",316228,mixed,hashmap,12361110,316228,25582492.19,-1,-1,-1
+"Exponential","lambda=0.0050",1000000,build-only,student,76523837,1000000,13067823.56,7,1.257,0.477
+"Exponential","lambda=0.0050",1000000,build-only,hashmap,142209237,1000000,7031892.03,-1,-1,-1
+"Exponential","lambda=0.0050",1000000,mixed,student,56267947,1000000,17772107.45,6,1.258,0.479
+"Exponential","lambda=0.0050",1000000,mixed,hashmap,74233259,1000000,13471050.76,-1,-1,-1
